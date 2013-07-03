@@ -13,7 +13,7 @@ describe ApplicationHelper do
 
 		context 'for regular employees' do
 			it 'does not show people to fire' do
-				user = stub('User', :has_role => false)
+				user = stub('User', :has_role? => false)
 				helper.stub(:current_user).and_return(user)
 				content_to_show = helper.show_content_for(:hr) { 'people to fire'}
 				content_to_show.should eq nil

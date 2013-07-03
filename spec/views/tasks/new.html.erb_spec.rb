@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'tasks/new.html.erb' do
-	let(:task) { mock_model('Task').as_new_record }
+	let(:task) { mock_model('Task', name: 'buy milk').as_new_record }
 
 	before do
 		assign(:task, task)
@@ -20,7 +20,7 @@ describe 'tasks/new.html.erb' do
 
 	it 'displays task name field' do
 		rendered.should have_selector('form', method: 'post', action: tasks_path) do |form|
-			form.should have_selector('input', id: 'task_name', name: 'task_name', type: 'text')
+			form.should have_selector('input', id: 'task_name', name: 'task[name]', type: 'text')
 		end
 	end
 end
